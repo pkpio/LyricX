@@ -3,5 +3,14 @@
 
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
-    <string name="title_activity_lyric">LyricActivity</string>
+    <string name="title_activity_lyric">LyricX</string>
+
+    <string name="s_artist_hint">Artist name</string>
+    <string name="s_song_hint">Song title</string>
+    <string name="s_search_btn">search</string>
+    <string name="s_artist_error">Can\'t be empty</string>
+    <string name="s_song_error">Can\'t be empty</string>
+
+    <string name="l_rank">Rating %d/10</string>
+
 </resources>

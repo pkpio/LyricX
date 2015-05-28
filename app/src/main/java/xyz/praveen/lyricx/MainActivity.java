@@ -1,7 +1,10 @@
 package xyz.praveen.lyricx;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import com.mobprofs.retrofit.converters.SimpleXmlConverter;
@@ -13,37 +16,35 @@ import retrofit.client.Response;
 import xyz.praveen.lyricx.model.GetLyricResult;
 
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        final TextView helloTv = (TextView) findViewById(R.id.hello);
+        findViewById(R.id.s_search_btn).setOnClickListener(this);
+    }
 
-        // Rest adapter
-        RestAdapter restAdapter = new RestAdapter.Builder()
-                .setEndpoint(Param.API_ENDPOINT)
-                .setConverter(new SimpleXmlConverter())
-                .build();
+    @Override
+    public void onClick(View v) {
+        final EditText artistView = (EditText) findViewById(R.id.s_artist);
+        final EditText songView = (EditText) findViewById(R.id.s_song);
+        String artist = artistView.getText().toString();
+        String song = songView.getText().toString();
 
-        // Instance of API from adapter
-        ChartLyricsAPI clApi = restAdapter.create(ChartLyricsAPI.class);
+        if (artist.length() == 0) {
+            artistView.setError(getString(R.string.s_artist_error));
+            return;
+        }
 
-        // Callback
-        Callback<GetLyricResult> mCb = new Callback<GetLyricResult>() {
-            @Override
-            public void success(GetLyricResult getLyricResult, Response response) {
-                helloTv.setText(getLyricResult.getLyric());
-            }
+        if (song.length() == 0) {
+            songView.setError(getString(R.string.s_song_error));
+            return;
+        }
 
-            @Override
-            public void failure(RetrofitError error) {
-                helloTv.setText(error.toString());
-            }
-        };
-
-        // Make a call
-        clApi.searchLyricDirect("michael jackson", "bad", mCb);
+        Intent i = new Intent(this, LyricActivity.class);
+        i.putExtra("artist", artist);
+        i.putExtra("song", song);
+        startActivity(i);
     }
 }

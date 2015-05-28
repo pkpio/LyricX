@@ -11,8 +11,8 @@
     <!-- Album art -->
     <ImageView
         android:id="@+id/l_albumart"
-        android:layout_width="75dp"
-        android:layout_height="75dp"
+        android:layout_width="@dimen/l_albumart_size"
+        android:layout_height="@dimen/l_albumart_size"
         android:layout_marginRight="8dp"
         android:src="@drawable/albumart" />
 
@@ -20,26 +20,29 @@
     <!-- Song info -->
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="75dp"
+        android:layout_height="@dimen/l_info_box_height"
+        android:layout_marginTop="16dp"
         android:layout_toRightOf="@id/l_albumart"
         android:orientation="vertical"
-        android:weightSum="2">
+        android:weightSum="3">
 
         <!-- Song name -->
         <me.grantland.widget.AutofitTextView
             android:id="@+id/l_title"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:singleLine="true" />
+            style="@style/LyricInfo"
+            android:text="Criminal" />
 
         <!-- Song Artist -->
         <me.grantland.widget.AutofitTextView
             android:id="@+id/l_artist"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:singleLine="true" />
+            style="@style/LyricInfo"
+            android:text="Michel Jackson" />
+
+        <!-- Song Rating -->
+        <me.grantland.widget.AutofitTextView
+            android:id="@+id/l_rank"
+            style="@style/LyricInfo"
+            android:text="@string/l_rank" />
     </LinearLayout>
 
     <!-- Lyrics -->
@@ -53,9 +56,8 @@
             android:id="@+id/l_lyrics"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:minHeight="150dp" />
-
+            android:minHeight="150dp"
+            android:text="Sample lyrics" />
     </ScrollView>
-
 
 </RelativeLayout>

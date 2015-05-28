@@ -2,16 +2,79 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/md_red_500"
     android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".MainActivity">
 
-    <TextView
-        android:id="@+id/hello"
-        android:layout_width="wrap_content"
+    <!-- Artist -->
+
+    <FrameLayout
+        android:id="@+id/s_artist_box"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/s_box_height"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="40dp"
+        android:background="#ffffff"
+        android:gravity="center_vertical">
+
+        <EditText
+            android:id="@+id/s_artist"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@null"
+            android:hint="@string/s_artist_hint"
+            android:inputType="textUri"
+            android:paddingLeft="@dimen/s_text_paddingleft"
+            android:paddingRight="@dimen/s_text_paddingright"
+            android:textColorHint="@color/md_grey_300" />
+
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:paddingLeft="@dimen/s_ic_paddingleft"
+            android:paddingRight="@dimen/s_ic_paddingright"
+            android:src="@drawable/ic_person" />
+    </FrameLayout>
+
+    <!-- Song -->
+
+    <FrameLayout
+        android:id="@+id/s_song_box"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/s_box_height"
+        android:layout_below="@+id/s_artist_box"
+        android:layout_gravity="center_horizontal"
+        android:background="#ffffff"
+        android:gravity="center_vertical">
+
+        <EditText
+            android:id="@+id/s_song"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@null"
+            android:hint="@string/s_song_hint"
+            android:inputType="textUri"
+            android:paddingLeft="@dimen/s_text_paddingleft"
+            android:paddingRight="@dimen/s_text_paddingright"
+            android:textColorHint="@color/md_grey_300" />
+
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:paddingLeft="@dimen/s_ic_paddingleft"
+            android:paddingRight="@dimen/s_ic_paddingright"
+            android:src="@drawable/ic_music" />
+    </FrameLayout>
+
+    <Button
+        android:id="@+id/s_search_btn"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:text="@string/hello_world" />
+        android:layout_below="@id/s_song_box"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="40dp"
+        android:text="@string/s_search_btn" />
+
 
 </RelativeLayout>
