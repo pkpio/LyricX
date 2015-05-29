@@ -5,15 +5,6 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.TextView;
-
-import com.mobprofs.retrofit.converters.SimpleXmlConverter;
-
-import retrofit.Callback;
-import retrofit.RestAdapter;
-import retrofit.RetrofitError;
-import retrofit.client.Response;
-import xyz.praveen.lyricx.model.GetLyricResult;
 
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {

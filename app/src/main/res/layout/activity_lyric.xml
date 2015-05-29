@@ -30,13 +30,13 @@
         <me.grantland.widget.AutofitTextView
             android:id="@+id/l_title"
             style="@style/LyricInfo"
-            android:text="Criminal" />
+            android:text="@string/l_song_holder" />
 
         <!-- Song Artist -->
         <me.grantland.widget.AutofitTextView
             android:id="@+id/l_artist"
             style="@style/LyricInfo"
-            android:text="Michel Jackson" />
+            android:text="@string/l_artist_holder" />
 
         <!-- Song Rating -->
         <me.grantland.widget.AutofitTextView
@@ -57,7 +57,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:minHeight="150dp"
-            android:text="Sample lyrics" />
+            android:text="@string/l_lyrics_holder" />
     </ScrollView>
 
 </RelativeLayout>

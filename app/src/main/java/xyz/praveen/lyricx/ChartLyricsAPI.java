@@ -2,7 +2,6 @@ package xyz.praveen.lyricx;
 
 import retrofit.Callback;
 import retrofit.http.GET;
-import retrofit.http.Path;
 import retrofit.http.Query;
 import xyz.praveen.lyricx.model.GetLyricResult;
 

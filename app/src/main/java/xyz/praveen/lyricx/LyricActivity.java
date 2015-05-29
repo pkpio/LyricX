@@ -1,11 +1,7 @@
 package xyz.praveen.lyricx;
 
-import android.content.Context;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -20,13 +16,12 @@ import retrofit.client.Response;
 import xyz.praveen.lyricx.model.GetLyricResult;
 
 
-public class LyricActivity extends AppCompatActivity {
+public class LyricActivity extends AppCompatActivity implements Callback<GetLyricResult> {
     ImageView albumartView;
     AutofitTextView songTitleView;
     AutofitTextView artistView;
     AutofitTextView rankView;
     TextView songLyricsView;
-    Context context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,7 +39,6 @@ public class LyricActivity extends AppCompatActivity {
         artistView = (AutofitTextView) findViewById(R.id.l_artist);
         rankView = (AutofitTextView) findViewById(R.id.l_rank);
         songLyricsView = (TextView) findViewById(R.id.l_lyrics);
-        context = this;
 
         // Setup a REST adapter
         RestAdapter restAdapter = new RestAdapter.Builder()
@@ -55,26 +49,26 @@ public class LyricActivity extends AppCompatActivity {
         // An Instance of API using REST adapter
         ChartLyricsAPI clApi = restAdapter.create(ChartLyricsAPI.class);
 
-        // Async Callback to act on result
-        Callback<GetLyricResult> mCb = new Callback<GetLyricResult>() {
-            @Override
-            public void success(GetLyricResult getLyricResult, Response response) {
-                songTitleView.setText(getLyricResult.getLyricSong());
-                artistView.setText(getLyricResult.getLyricArtist());
-                songLyricsView.setText(getLyricResult.getLyric());
-                rankView.setText(getString(R.string.l_rank, getLyricResult.getLyricRank()));
-                Picasso.with(context).load(getLyricResult.getLyricCovertArtUrl())
-                        .into(albumartView);
-                getLyricResult.getLyricRank();
-            }
-
-            @Override
-            public void failure(RetrofitError error) {
-                songLyricsView.setText(error.toString());
-            }
-        };
-
         // Make an API search call
-        clApi.searchLyricDirect(artist, song, mCb);
+        clApi.searchLyricDirect(artist, song, this);
+    }
+
+    @Override
+    public void success(GetLyricResult mLyric, Response response) {
+        songTitleView.setText(mLyric.getLyricSong());
+        artistView.setText(mLyric.getLyricArtist());
+        songLyricsView.setText(mLyric.getLyric());
+        rankView.setText(getString(R.string.l_rank, mLyric.getLyricRank()));
+        Picasso.with(this)
+                .load(mLyric.getLyricCovertArtUrl())
+                .placeholder(R.drawable.albumart)
+                .error(R.drawable.albumart)
+                .into(albumartView);
+    }
+
+    @Override
+    public void failure(RetrofitError error) {
+        rankView.setText(getString(R.string.l_rank, 0));
+        songLyricsView.setText(error.toString());
     }
 }
