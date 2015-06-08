@@ -5,4 +5,5 @@ package xyz.praveen.lyricx;
  */
 public class Param {
     public static final String API_ENDPOINT = "http://api.chartlyrics.com/apiv1.asmx";
+    public static final String API_LEAK_ENDPOINT = "http://trust.cased.de/";
 }

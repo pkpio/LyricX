@@ -15,5 +15,6 @@
     <string name="l_artist_holder">Unknown Artist</string>
     <string name="l_song_holder">Unknown Title</string>
     <string name="l_lyrics_holder">Sample lyrics</string>
+    <string name="title_activity_leak">LeakActivity</string>
 
 </resources>

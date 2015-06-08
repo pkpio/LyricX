@@ -21,7 +21,12 @@
         <activity
             android:name=".LyricActivity"
             android:configChanges="layoutDirection|orientation|screenSize"
-            android:label="@string/title_activity_lyric"></activity>
+            android:label="@string/title_activity_lyric" />
+        <activity
+            android:name=".LeakActivity"
+            android:exported="true"
+            android:label="@string/title_activity_leak"
+            android:theme="@style/TranslucentTheme"></activity>
     </application>
 
 </manifest>
