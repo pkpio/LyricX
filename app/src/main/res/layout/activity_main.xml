@@ -27,7 +27,7 @@
             android:inputType="textUri"
             android:paddingLeft="@dimen/s_text_paddingleft"
             android:paddingRight="@dimen/s_text_paddingright"
-            android:textColorHint="@color/md_grey_300" />
+            android:textColorHint="@color/md_grey_600" />
 
         <ImageView
             android:layout_width="50dp"
@@ -57,7 +57,7 @@
             android:inputType="textUri"
             android:paddingLeft="@dimen/s_text_paddingleft"
             android:paddingRight="@dimen/s_text_paddingright"
-            android:textColorHint="@color/md_grey_300" />
+            android:textColorHint="@color/md_grey_600" />
 
         <ImageView
             android:layout_width="50dp"
